@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Cartify</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:Poppins;
+margin:0;
+background:#f4f6f9;
+}
+
+/* HEADER */
+
+header{
+
+background:#0d6efd;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+
+}
+
+nav a{
+
+color:white;
+margin:10px;
+cursor:pointer;
+
+}
+
+/* BANNER */
+
+.banner{
+
+height:300px;
+
+background:url('images/banner.png');
+
+background-size:cover;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+color:white;
+
+font-size:40px;
+
+}
+
+/* PRODUCTS */
+
+.products{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:20px;
+
+padding:20px;
+
+}
+
+.card{
+
+background:white;
+
+padding:15px;
+
+width:250px;
+
+box-shadow:0 0 10px gray;
+
+text-align:center;
+
+}
+
+.card img{
+
+width:100%;
+
+height:200px;
+
+}
+
+/* SECTION */
+
+.section{
+
+display:none;
+
+padding:20px;
+
+}
+
+.active{
+
+display:block;
+
+}
+
+button{
+
+background:#0d6efd;
+
+color:white;
+
+border:none;
+
+padding:10px;
+
+width:100%;
+
+margin-top:10px;
+
+}
+
+input{
+
+padding:10px;
+
+margin:10px;
+
+width:250px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<h2 onclick="show('home')" style="cursor:pointer">
+
+Cartify
+
+</h2>
+
+<nav>
+
+<a onclick="show('home')">Home</a>
+
+<a onclick="show('cart')">
+
+Cart (<span id="count">0</span>)
+
+</a>
+
+<a onclick="show('login')">Login</a>
+
+<a onclick="show('checkout')">Checkout</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- HOME -->
+
+<div id="home" class="section active">
+
+
+<div class="banner">
+
+Cartify Sale 50% OFF
+
+</div>
+
+
+
+<div class="products">
+
+
+
+<div class="card">
+
+<img src="images/tshirt.jpg">
+
+<h3>T Shirt</h3>
+
+<p>₹499</p>
+
+<button onclick="add('T Shirt',499)">
+
+Add to Cart
+
+</button>
+
+</div>
+
+
+
+<div class="card">
+
+<img src="images/shoes.jpg">
+
+<h3>Shoes</h3>
+
+<p>₹999</p>
+
+<button onclick="add('Shoes',999)">
+
+Add to Cart
+
+</button>
+
+</div>
+
+
+
+<div class="card">
+
+<img src="images/watch.jpg">
+
+<h3>Watch</h3>
+
+<p>₹799</p>
+
+<button onclick="add('Watch',799)">
+
+Add to Cart
+
+</button>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+<!-- CART -->
+
+<div id="cart" class="section">
+
+<h2>Your Cart</h2>
+
+<div id="items"></div>
+
+<h3>Total ₹<span id="total">0</span></h3>
+
+</div>
+
+
+
+<!-- LOGIN -->
+
+<div id="login" class="section">
+
+<h2>Login</h2>
+
+<input placeholder="Email">
+
+<br>
+
+<input placeholder="Password">
+
+<br>
+
+<button onclick="login()">
+
+Login
+
+</button>
+
+</div>
+
+
+
+<!-- CHECKOUT -->
+
+<div id="checkout" class="section">
+
+<h2>Checkout</h2>
+
+<input placeholder="Address">
+
+<br>
+
+<input placeholder="Phone">
+
+<br>
+
+<button onclick="order()">
+
+Place Order
+
+</button>
+
+</div>
+
+
+
+<script>
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+update();
+
+
+function show(id){
+
+document.querySelectorAll('.section')
+
+.forEach(s=>s.classList.remove('active'));
+
+document.getElementById(id)
+
+.classList.add('active');
+
+}
+
+
+function add(name,price){
+
+cart.push({name,price});
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+update();
+
+alert("Added");
+
+}
+
+
+function update(){
+
+document.getElementById("count").innerText=cart.length;
+
+let items="";
+
+let total=0;
+
+cart.forEach(item=>{
+
+items+=item.name+" ₹"+item.price+"<br>";
+
+total+=item.price;
+
+});
+
+document.getElementById("items").innerHTML=items;
+
+document.getElementById("total").innerText=total;
+
+}
+
+
+function login(){
+
+alert("Login Successful");
+
+show('home');
+
+}
+
+
+function order(){
+
+alert("Order Placed");
+
+cart=[];
+
+localStorage.removeItem("cart");
+
+update();
+
+show('home');
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
