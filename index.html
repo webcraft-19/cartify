@@ -1,497 +1,247 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Cartify</title>
-
 
 <style>
 
-
 body{
-
 margin:0;
-
 font-family:Arial;
-
 }
-
-
 
 /* LOGIN PAGE */
 
-
 #loginPage{
 
-
 height:100vh;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
-
-background:#003153;   /* PRUSSIAN BLUE */
-
+background:#003153;
+color:white;
 
 }
 
-
-
-.loginBox{
-
+.login-box{
 
 background:white;
-
-padding:40px;
-
+color:black;
+padding:30px;
 border-radius:10px;
-
 text-align:center;
 
-box-shadow:0 0 20px black;
-
-
 }
-
-
-
-.loginBox h2{
-
-
-font-weight:bold;
-
-font-style:italic;
-
-
-}
-
-
-
-label{
-
-
-font-weight:bold;
-
-font-style:italic;
-
-
-}
-
-
 
 input{
 
-
 padding:10px;
-
-width:250px;
-
 margin:10px;
-
+width:200px;
 font-weight:bold;
-
 font-style:italic;
 
-
 }
 
+button{
 
-
-.loginBox button{
-
-
-padding:12px;
-
-width:100%;
-
-background:#003153;
-
+padding:10px;
+background:#007bff;
 color:white;
-
 border:none;
-
-font-size:16px;
-
 cursor:pointer;
 
-
 }
 
+button:hover{
 
+background:#0056b3;
+
+}
 
 /* WEBSITE */
 
-
-#mainPage{
-
+#website{
 
 display:none;
 
-background:#f2f2f2;
-
-
 }
-
-
 
 header{
 
-
-background:#2874f0;
-
+background:#007bff;
 color:white;
-
 padding:15px;
 
-text-align:center;
+}
 
-font-size:28px;
+nav{
 
+float:right;
 
 }
 
+nav a{
 
+color:white;
+margin:10px;
+text-decoration:none;
 
-.banner img{
+}
 
+.banner{
 
 width:100%;
-
-height:400px;
-
+height:300px;
 object-fit:cover;
 
-
 }
-
-
 
 .products{
 
-
 display:flex;
-
 justify-content:center;
-
 gap:20px;
-
-padding:20px;
-
-flex-wrap:wrap;
-
+margin:20px;
 
 }
 
+.card{
 
-
-.product{
-
-
-background:white;
-
-padding:15px;
-
-width:200px;
-
+border:1px solid gray;
+padding:10px;
 text-align:center;
 
-box-shadow:0 0 10px gray;
-
-
 }
 
+.card img{
 
-
-.product img{
-
-
-width:100%;
-
+width:200px;
 height:200px;
-
 object-fit:cover;
 
-
 }
-
-
-
-.product button{
-
-
-background:#2874f0;
-
-color:white;
-
-border:none;
-
-padding:10px;
-
-cursor:pointer;
-
-
-}
-
-
 
 </style>
 
-
-
 </head>
-
-
 
 <body>
 
-
-
-
 <!-- LOGIN PAGE -->
-
 
 <div id="loginPage">
 
+<div class="login-box">
 
+<h2>Login Cartify</h2>
 
-<div class="loginBox">
+<input type="text" id="username" placeholder="Username"><br>
 
+<input type="password" id="password" placeholder="Password"><br>
 
-
-<h2>Cartify Login</h2>
-
-
-
-<label>Username</label>
-
-<br>
-
-<input type="text" id="username">
-
-
-
-<br>
-
-
-
-<label>Password</label>
-
-<br>
-
-<input type="password" id="password">
-
-
-
-<br><br>
-
-
-
-<button onclick="login()">
-
-LOGIN
-
-</button>
-
-
+<button onclick="login()">Login</button>
 
 </div>
 
-
-
 </div>
-
-
 
 
 <!-- WEBSITE -->
 
-
-<div id="mainPage">
-
-
+<div id="website">
 
 <header>
 
-Cartify Shopping
+<h2>Cartify</h2>
+
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#">Cart</a>
+
+<a href="#">Checkout</a>
+
+</nav>
 
 </header>
 
 
-
-<div class="banner">
-
-<img src="images/banner.png">
-
-</div>
-
-
+<img src="banner.png" class="banner">
 
 
 <div class="products">
 
+<div class="card">
 
-
-
-<div class="product">
-
-
-<img src="images/tshirt.jpg">
-
+<img src="Tshirt.jpg">
 
 <h3>T Shirt</h3>
 
-
 <p>₹499</p>
 
-
-<button onclick="addCart(499)">
-
-Add to Cart
-
-</button>
-
+<button>Add to cart</button>
 
 </div>
 
 
+<div class="card">
 
-
-<div class="product">
-
-
-<img src="images/shoes.jpg">
-
+<img src="shoes.jpg">
 
 <h3>Shoes</h3>
 
-
 <p>₹999</p>
 
-
-<button onclick="addCart(999)">
-
-Add to Cart
-
-</button>
-
+<button>Add to cart</button>
 
 </div>
 
 
+<div class="card">
 
-
-<div class="product">
-
-
-<img src="images/watch.jpg">
-
+<img src="watch.jpg">
 
 <h3>Watch</h3>
 
-
 <p>₹1499</p>
 
-
-<button onclick="addCart(1499)">
-
-Add to Cart
-
-</button>
-
+<button>Add to cart</button>
 
 </div>
 
-
-
-
 </div>
 
-
-
-<h2 align="center">
-
-Total ₹ <span id="total">0</span>
-
-</h2>
-
-
-
 </div>
-
 
 
 
 <script>
 
-
-
-
-var total=0;
-
-
-
 function login(){
-
-
 
 var user=document.getElementById("username").value;
 
 var pass=document.getElementById("password").value;
 
-
-
-if(user=="mohit" && pass=="1234"){
-
-
+if(user=="admin" && pass=="1234"){
 
 document.getElementById("loginPage").style.display="none";
 
-document.getElementById("mainPage").style.display="block";
-
-
+document.getElementById("website").style.display="block";
 
 }
-
-
 
 else{
 
-
-alert("Wrong Username or Password");
-
+alert("Wrong login");
 
 }
 
-
-
 }
-
-
-
-function addCart(price){
-
-
-total+=price;
-
-
-document.getElementById("total").innerText=total;
-
-
-}
-
-
 
 </script>
-
-
 
 
 </body>
