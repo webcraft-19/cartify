@@ -4,85 +4,319 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cartify Shopping</title>
+<title>Cartify</title>
+
 
 <style>
 
+
 body{
+
 margin:0;
+
 font-family:Arial;
-background:#f2f2f2;
+
 }
 
-/* HEADER */
+
+
+/* LOGIN PAGE */
+
+
+#loginPage{
+
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+
+background:#003153;   /* PRUSSIAN BLUE */
+
+
+}
+
+
+
+.loginBox{
+
+
+background:white;
+
+padding:40px;
+
+border-radius:10px;
+
+text-align:center;
+
+box-shadow:0 0 20px black;
+
+
+}
+
+
+
+.loginBox h2{
+
+
+font-weight:bold;
+
+font-style:italic;
+
+
+}
+
+
+
+label{
+
+
+font-weight:bold;
+
+font-style:italic;
+
+
+}
+
+
+
+input{
+
+
+padding:10px;
+
+width:250px;
+
+margin:10px;
+
+font-weight:bold;
+
+font-style:italic;
+
+
+}
+
+
+
+.loginBox button{
+
+
+padding:12px;
+
+width:100%;
+
+background:#003153;
+
+color:white;
+
+border:none;
+
+font-size:16px;
+
+cursor:pointer;
+
+
+}
+
+
+
+/* WEBSITE */
+
+
+#mainPage{
+
+
+display:none;
+
+background:#f2f2f2;
+
+
+}
+
+
 
 header{
+
+
 background:#2874f0;
+
 color:white;
+
 padding:15px;
+
 text-align:center;
+
 font-size:28px;
-font-weight:bold;
+
+
 }
 
-/* BANNER */
+
 
 .banner img{
+
+
 width:100%;
+
 height:400px;
+
 object-fit:cover;
+
+
 }
 
-/* PRODUCTS */
+
 
 .products{
+
+
 display:flex;
+
 justify-content:center;
+
 gap:20px;
-flex-wrap:wrap;
+
 padding:20px;
+
+flex-wrap:wrap;
+
+
 }
+
+
 
 .product{
+
+
 background:white;
+
 padding:15px;
-width:220px;
+
+width:200px;
+
 text-align:center;
-border-radius:10px;
+
 box-shadow:0 0 10px gray;
+
+
 }
+
+
 
 .product img{
+
+
 width:100%;
+
 height:200px;
+
 object-fit:cover;
+
+
 }
 
-button{
+
+
+.product button{
+
+
 background:#2874f0;
+
 color:white;
+
 border:none;
+
 padding:10px;
-margin-top:10px;
+
 cursor:pointer;
+
+
 }
 
-/* CART */
 
-.cart{
-background:white;
-margin:20px;
-padding:20px;
-}
 
 </style>
+
+
 
 </head>
 
 
+
 <body>
+
+
+
+
+<!-- LOGIN PAGE -->
+
+
+<div id="loginPage">
+
+
+
+<div class="loginBox">
+
+
+
+<h2>Cartify Login</h2>
+
+
+
+<label>Username</label>
+
+<br>
+
+<input type="text" id="username">
+
+
+
+<br>
+
+
+
+<label>Password</label>
+
+<br>
+
+<input type="password" id="password">
+
+
+
+<br><br>
+
+
+
+<button onclick="login()">
+
+LOGIN
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<!-- WEBSITE -->
+
+
+<div id="mainPage">
+
+
 
 <header>
 
@@ -91,7 +325,6 @@ Cartify Shopping
 </header>
 
 
-<!-- BANNER -->
 
 <div class="banner">
 
@@ -101,106 +334,95 @@ Cartify Shopping
 
 
 
-<!-- PRODUCTS -->
 
 <div class="products">
 
+
+
+
 <div class="product">
+
 
 <img src="images/tshirt.jpg">
 
+
 <h3>T Shirt</h3>
+
 
 <p>₹499</p>
 
-<button onclick="addCart('T Shirt',499)">
+
+<button onclick="addCart(499)">
 
 Add to Cart
 
 </button>
 
+
 </div>
 
 
 
+
 <div class="product">
+
 
 <img src="images/shoes.jpg">
 
+
 <h3>Shoes</h3>
+
 
 <p>₹999</p>
 
-<button onclick="addCart('Shoes',999)">
+
+<button onclick="addCart(999)">
 
 Add to Cart
 
 </button>
 
+
 </div>
+
 
 
 
 <div class="product">
 
+
 <img src="images/watch.jpg">
+
 
 <h3>Watch</h3>
 
+
 <p>₹1499</p>
 
-<button onclick="addCart('Watch',1499)">
+
+<button onclick="addCart(1499)">
 
 Add to Cart
 
 </button>
 
-</div>
-
 
 </div>
 
 
 
-<!-- CART -->
-
-<div class="cart">
-
-<h2>Cart</h2>
-
-<ul id="cartlist"></ul>
-
-<h3>Total: ₹ <span id="total">0</span></h3>
-
-<button onclick="checkout()">
-
-Checkout
-
-</button>
 
 </div>
 
 
 
-<!-- LOGIN -->
+<h2 align="center">
 
-<div class="cart">
+Total ₹ <span id="total">0</span>
 
-<h2>Login</h2>
+</h2>
 
-<input type="text" placeholder="Username" id="user">
 
-<br><br>
-
-<input type="password" placeholder="Password" id="pass">
-
-<br><br>
-
-<button onclick="login()">
-
-Login
-
-</button>
 
 </div>
 
@@ -210,41 +432,65 @@ Login
 <script>
 
 
+
+
 var total=0;
-
-function addCart(name,price){
-
-var li=document.createElement("li");
-
-li.innerText=name+" ₹"+price;
-
-document.getElementById("cartlist").appendChild(li);
-
-total+=price;
-
-document.getElementById("total").innerText=total;
-
-}
-
-
-
-function checkout(){
-
-alert("Order placed Successfully");
-
-}
 
 
 
 function login(){
 
-alert("Login Successful");
+
+
+var user=document.getElementById("username").value;
+
+var pass=document.getElementById("password").value;
+
+
+
+if(user=="mohit" && pass=="1234"){
+
+
+
+document.getElementById("loginPage").style.display="none";
+
+document.getElementById("mainPage").style.display="block";
+
+
+
+}
+
+
+
+else{
+
+
+alert("Wrong Username or Password");
+
+
+}
+
+
+
+}
+
+
+
+function addCart(price){
+
+
+total+=price;
+
+
+document.getElementById("total").innerText=total;
+
 
 }
 
 
 
 </script>
+
 
 
 
