@@ -1,106 +1,83 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <title>Cartify</title>
 
 <style>
 
 body{
-
 margin:0;
 font-family:Arial;
-
 }
 
 /* LOGIN PAGE */
 
 #loginPage{
-
 height:100vh;
+background:#003153;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#003153;
-
 }
 
 .loginBox{
-
 background:white;
 padding:30px;
-text-align:center;
 border-radius:10px;
-
+text-align:center;
 }
 
 input{
-
+display:block;
+margin:10px auto;
 padding:10px;
-margin:10px;
-width:200px;
-
+font-weight:bold;
+font-style:italic;
 }
 
 button{
-
-padding:10px;
-background:blue;
+padding:10px 20px;
+background:#007bff;
 color:white;
 border:none;
 cursor:pointer;
-
 }
 
 /* WEBSITE */
 
 #website{
-
 display:none;
-
 }
 
 header{
-
-background:blue;
+background:#007bff;
 color:white;
 padding:15px;
-
+font-size:24px;
 }
 
 .banner{
-
 width:100%;
-
 }
 
 .products{
-
 display:flex;
 gap:20px;
-justify-content:center;
-margin:20px;
-
+padding:20px;
 }
 
-.card{
-
+.product{
 border:1px solid gray;
 padding:10px;
-
 }
 
-.card img{
-
-width:200px;
-
+.product img{
+width:150px;
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -113,13 +90,9 @@ width:200px;
 
 <h2>Login Cartify</h2>
 
-<input type="text" id="user" placeholder="Username">
+<input type="text" id="username" placeholder="Username">
 
-<br>
-
-<input type="password" id="pass" placeholder="Password">
-
-<br>
+<input type="password" id="password" placeholder="Password">
 
 <button onclick="login()">Login</button>
 
@@ -133,10 +106,9 @@ width:200px;
 
 <div id="website">
 
-
 <header>
 
-<h2>Cartify</h2>
+Cartify
 
 </header>
 
@@ -146,42 +118,40 @@ width:200px;
 
 <div class="products">
 
-
-<div class="card">
+<div class="product">
 
 <img src="Tshirt.jpg">
 
-<h3>Tshirt</h3>
+<h3>T Shirt</h3>
 
-<p>₹499</p>
+<button onclick="addCart()">Add</button>
 
 </div>
 
 
-<div class="card">
+<div class="product">
 
 <img src="shoes.jpg">
 
 <h3>Shoes</h3>
 
-<p>₹999</p>
+<button onclick="addCart()">Add</button>
 
 </div>
 
 
-<div class="card">
+<div class="product">
 
 <img src="watch.jpg">
 
 <h3>Watch</h3>
 
-<p>₹1499</p>
+<button onclick="addCart()">Add</button>
 
 </div>
 
 
 </div>
-
 
 </div>
 
@@ -191,12 +161,37 @@ width:200px;
 
 function login(){
 
-var username=document.getElementById("user").value;
+var user=document.getElementById("username").value;
 
-var password=document.getElementById("pass").value;
+var pass=document.getElementById("password").value;
 
 
-if(username==="admin" && password==="1234"){
+if(user=="admin" && pass=="1234"){
+
+localStorage.setItem("login","yes");
+
+document.getElementById("loginPage").style.display="none";
+
+document.getElementById("website").style.display="block";
+
+}
+else{
+
+alert("Wrong login");
+
+}
+
+}
+
+
+function addCart(){
+
+alert("Added to cart");
+
+}
+
+
+if(localStorage.getItem("login")=="yes"){
 
 document.getElementById("loginPage").style.display="none";
 
@@ -204,16 +199,7 @@ document.getElementById("website").style.display="block";
 
 }
 
-else{
-
-alert("Wrong Login");
-
-}
-
-}
-
 </script>
-
 
 
 </body>
